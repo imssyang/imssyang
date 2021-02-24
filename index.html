@@ -1,1 +1,14 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>redirect to blog.imssyang.com</title>
+</head>
+    <script language="javascript">
+        var domain = "blog.imssyang.com";
+        var current = window.location.href;
+        var target = current.substring(current.indexOf('/', current.indexOf(':') + 3));
+        window.location.href = "//" + domain + target;
+        location.href = "//" + domain + target;
+    </script>
+</html>
