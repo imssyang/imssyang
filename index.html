@@ -7,22 +7,24 @@
 <body>
   <script language="javascript">
     function getRedirectUrl() {
-      var mappings = {
-        'www.imssyang.com': 'blog.imssyang.com',
-        'gweb.imssyang.com': 'gweb-nfz8.onrender.com',
-      };
-      try {
-        var origin = new URL(document.referrer);
-        var target = mappings[origin.hostname];
-        if (target) {
-          return origin.protocol + "//" + target + origin.pathname;
+      var referrer = document.referrer;
+      if (referrer) {
+        var mappings = {
+          'www.imssyang.com': 'blog.imssyang.com',
+        };
+        try {
+          var origin = new URL(referrer);
+          var target = mappings[origin.hostname];
+          if (target) {
+            return origin.protocol + "//" + target + origin.pathname;
+          }
+        } catch (error) {
+          console.log('Exception:' + error.message);
         }
-      } catch (error) {
-        console.log('Exception:' + error.message);
       }
       return 'https://blog.imssyang.com';
     }
-    //location.href = getRedirectUrl();
+    location.href = getRedirectUrl();
   </script>
 </body>
 </html>
